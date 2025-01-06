@@ -68,14 +68,20 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
                 controller: _noteController,
               ),
               const Gap(30),
-              ElevatedButton(
-                onPressed: _createTask,
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: DisplayWhiteText(
-                    text: 'Save',
-                  ),
-                ),
+              GestureDetector(
+                onTap: _createTask,
+                child: Container(
+                    color: Colors.green,
+                    padding: EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        "save",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                    )),
               ),
               const Gap(30),
             ],

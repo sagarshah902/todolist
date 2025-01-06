@@ -27,6 +27,7 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
+          // Background
           AppBackground(
             headerHeight: deviceSize.height * 0.3,
             header: SingleChildScrollView(
@@ -34,14 +35,31 @@ class HomeScreen extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // Developed by Sagar Shah at the top
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Developed by Sagar Shah',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
                   InkWell(
                     onTap: () => Helpers.selectDate(context, ref),
                     child: DisplayWhiteText(
                       text: Helpers.dateFormatter(date),
                       fontWeight: FontWeight.normal,
+                      colors: Colors.white,
                     ),
                   ),
-                  const DisplayWhiteText(text: 'My Todo List', size: 40),
+                  const DisplayWhiteText(
+                    text: 'My Todo List',
+                    size: 40,
+                    colors: Colors.green,
+                  ),
                 ],
               ),
             ),
@@ -57,6 +75,7 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    // Incomplete tasks section
                     DisplayListOfTasks(
                       tasks: inCompletedTasks,
                     ),
@@ -65,9 +84,12 @@ class HomeScreen extends ConsumerWidget {
                       'Completed',
                       style: context.textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        color: Colors.teal, // A touch of color
                       ),
                     ),
                     const Gap(20),
+                    // Completed tasks section
                     DisplayListOfTasks(
                       isCompletedTasks: true,
                       tasks: completedTasks,
@@ -77,17 +99,19 @@ class HomeScreen extends ConsumerWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal, // Background color
                         foregroundColor: Colors.white, // Text color
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(12.0),
                         shape: RoundedRectangleBorder(
                           borderRadius:
-                              BorderRadius.circular(10.0), // Rounded corners
+                              BorderRadius.circular(12.0), // Rounded corners
                         ),
+                        elevation: 5, // Button shadow
                       ),
                       onPressed: () => context.push(RouteLocation.createTask),
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: DisplayWhiteText(
                           text: 'Add New Task',
+                          colors: Colors.black,
                         ),
                       ),
                     ),
@@ -101,6 +125,7 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
+  // Function to get incomplete tasks
   List<Task> _incompltedTask(List<Task> tasks, WidgetRef ref) {
     final date = ref.watch(dateProvider);
     final List<Task> filteredTask = [];
@@ -116,6 +141,7 @@ class HomeScreen extends ConsumerWidget {
     return filteredTask;
   }
 
+  // Function to get completed tasks
   List<Task> _compltedTask(List<Task> tasks, WidgetRef ref) {
     final date = ref.watch(dateProvider);
     final List<Task> filteredTask = [];

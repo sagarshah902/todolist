@@ -9,31 +9,32 @@ class AppTheme {
   static final light = FlexThemeData.light(
     scheme: FlexScheme.indigo,
     surfaceMode: FlexSurfaceMode.highScaffoldLowSurfacesVariantDialog,
-    blendLevel: 40,
+    blendLevel: 20, // Reduced blend level for better readability
     appBarStyle: FlexAppBarStyle.primary,
-    appBarOpacity: 0.95,
-    appBarElevation: 0,
+    appBarOpacity: 1, // Full opacity for better visibility
+    appBarElevation: 0.5, // Slight elevation for better distinction
     transparentStatusBar: true,
     tabBarStyle: FlexTabBarStyle.forBackground,
     tooltipsMatchBackground: true,
-    swapColors: true,
-    lightIsWhite: true,
+    swapColors: false, // Avoid color swaps for consistency
+    lightIsWhite: false, // Ensure better contrast for text readability
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    fontFamily: GoogleFonts.dekko().fontFamily,
+    fontFamily: GoogleFonts.roboto().fontFamily, // Use a more standard font
     subThemesData: const FlexSubThemesData(
       useTextTheme: true,
       fabUseShape: true,
       interactionEffects: true,
-      bottomNavigationBarElevation: 0,
-      bottomNavigationBarOpacity: 1,
-      navigationBarOpacity: 1,
-      navigationBarMutedUnselectedIcon: true,
+      bottomNavigationBarElevation: 1, // Add slight elevation for clarity
+      bottomNavigationBarOpacity: 0.98, // Slight opacity for a cleaner look
+      navigationBarOpacity: 1, // Fully opaque navigation bar
+      navigationBarMutedUnselectedIcon:
+          false, // Keep icons more distinguishable
       inputDecoratorIsFilled: true,
       inputDecoratorBorderType: FlexInputBorderType.outline,
       inputDecoratorUnfocusedHasBorder: true,
-      blendOnColors: true,
-      blendTextTheme: true,
-      popupMenuOpacity: 0.95,
+      blendOnColors: false, // Reduce blending for clarity
+      blendTextTheme: false, // Ensure text is sharp and readable
+      popupMenuOpacity: 1, // Fully opaque popup menus for better visibility
     ),
   );
 }
